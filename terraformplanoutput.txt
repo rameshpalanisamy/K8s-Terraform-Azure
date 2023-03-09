@@ -1,0 +1,504 @@
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
+
+
+------------------------------------------------------------------------
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.aks.azurerm_kubernetes_cluster.main will be created
+  + resource "azurerm_kubernetes_cluster" "main" {
+      + dns_prefix              = "casestudy"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + kube_admin_config       = (known after apply)
+      + kube_admin_config_raw   = (sensitive value)
+      + kube_config             = (known after apply)
+      + kube_config_raw         = (sensitive value)
+      + kubelet_identity        = (known after apply)
+      + kubernetes_version      = (known after apply)
+      + location                = "northeurope"
+      + name                    = "casestudy-aks"
+      + node_resource_group     = (known after apply)
+      + private_cluster_enabled = true
+      + private_dns_zone_id     = (known after apply)
+      + private_fqdn            = (known after apply)
+      + private_link_enabled    = (known after apply)
+      + resource_group_name     = "casestudy-aks"
+      + sku_tier                = "Free"
+
+      + addon_profile {
+
+          + azure_policy {
+              + enabled = true
+            }
+
+          + http_application_routing {
+              + enabled                            = false
+              + http_application_routing_zone_name = (known after apply)
+            }
+
+          + oms_agent {
+              + enabled                    = true
+              + log_analytics_workspace_id = (known after apply)
+              + oms_agent_identity         = (known after apply)
+            }
+        }
+
+      + auto_scaler_profile {
+          + balance_similar_node_groups      = (known after apply)
+          + empty_bulk_delete_max            = (known after apply)
+          + expander                         = (known after apply)
+          + max_graceful_termination_sec     = (known after apply)
+          + max_node_provisioning_time       = (known after apply)
+          + max_unready_nodes                = (known after apply)
+          + max_unready_percentage           = (known after apply)
+          + new_pod_scale_up_delay           = (known after apply)
+          + scale_down_delay_after_add       = (known after apply)
+          + scale_down_delay_after_delete    = (known after apply)
+          + scale_down_delay_after_failure   = (known after apply)
+          + scale_down_unneeded              = (known after apply)
+          + scale_down_unready               = (known after apply)
+          + scale_down_utilization_threshold = (known after apply)
+          + scan_interval                    = (known after apply)
+          + skip_nodes_with_local_storage    = (known after apply)
+          + skip_nodes_with_system_pods      = (known after apply)
+        }
+
+      + default_node_pool {
+          + availability_zones   = [
+              + "1",
+              + "2",
+              + "3",
+            ]
+          + enable_auto_scaling  = true
+          + max_count            = 3
+          + max_pods             = (known after apply)
+          + min_count            = 1
+          + name                 = "nodepool"
+          + node_count           = (known after apply)
+          + orchestrator_version = (known after apply)
+          + os_disk_size_gb      = 30
+          + os_disk_type         = "Managed"
+          + type                 = "VirtualMachineScaleSets"
+          + vm_size              = "Standard_D4s_v3"
+          + vnet_subnet_id       = (known after apply)
+        }
+
+      + identity {
+          + principal_id = (known after apply)
+          + tenant_id    = (known after apply)
+          + type         = "SystemAssigned"
+        }
+
+      + network_profile {
+          + dns_service_ip     = (known after apply)
+          + docker_bridge_cidr = (known after apply)
+          + load_balancer_sku  = "standard"
+          + network_mode       = (known after apply)
+          + network_plugin     = "azure"
+          + network_policy     = "azure"
+          + outbound_type      = "loadBalancer"
+          + pod_cidr           = (known after apply)
+          + service_cidr       = (known after apply)
+
+          + load_balancer_profile {
+              + effective_outbound_ips    = (known after apply)
+              + idle_timeout_in_minutes   = (known after apply)
+              + managed_outbound_ip_count = (known after apply)
+              + outbound_ip_address_ids   = (known after apply)
+              + outbound_ip_prefix_ids    = (known after apply)
+              + outbound_ports_allocated  = (known after apply)
+            }
+        }
+
+      + role_based_access_control {
+          + enabled = true
+        }
+
+      + windows_profile {
+          + admin_password = (sensitive value)
+          + admin_username = (known after apply)
+        }
+    }
+
+  # module.aks.azurerm_log_analytics_solution.main[0] will be created
+  + resource "azurerm_log_analytics_solution" "main" {
+      + id                    = (known after apply)
+      + location              = "northeurope"
+      + resource_group_name   = "casestudy-aks"
+      + solution_name         = "ContainerInsights"
+      + workspace_name        = "casestudy-aks"
+      + workspace_resource_id = (known after apply)
+
+      + plan {
+          + name      = (known after apply)
+          + product   = "OMSGallery/ContainerInsights"
+          + publisher = "Microsoft"
+        }
+    }
+
+  # module.aks.azurerm_log_analytics_workspace.main[0] will be created
+  + resource "azurerm_log_analytics_workspace" "main" {
+      + daily_quota_gb             = 30
+      + id                         = (known after apply)
+      + internet_ingestion_enabled = true
+      + internet_query_enabled     = true
+      + location                   = "northeurope"
+      + name                       = "casestudy-aks"
+      + portal_url                 = (known after apply)
+      + primary_shared_key         = (sensitive value)
+      + resource_group_name        = "casestudy-aks"
+      + retention_in_days          = 30
+      + secondary_shared_key       = (sensitive value)
+      + sku                        = "PerGB2018"
+      + workspace_id               = (known after apply)
+    }
+
+  # module.aks.azurerm_monitor_diagnostic_setting.aks_logs[0] will be created
+  + resource "azurerm_monitor_diagnostic_setting" "aks_logs" {
+      + id                         = (known after apply)
+      + log_analytics_workspace_id = (known after apply)
+      + name                       = "casestudy-aks"
+      + target_resource_id         = (known after apply)
+
+      + log {
+          + category = "cluster-autoscaler"
+          + enabled  = true
+
+          + retention_policy {
+              + days    = 30
+              + enabled = true
+            }
+        }
+      + log {
+          + category = "kube-apiserver"
+          + enabled  = true
+
+          + retention_policy {
+              + days    = 30
+              + enabled = true
+            }
+        }
+      + log {
+          + category = "kube-audit"
+          + enabled  = true
+
+          + retention_policy {
+              + days    = 30
+              + enabled = true
+            }
+        }
+      + log {
+          + category = "kube-controller-manager"
+          + enabled  = true
+
+          + retention_policy {
+              + days    = 30
+              + enabled = true
+            }
+        }
+      + log {
+          + category = "kube-scheduler"
+          + enabled  = true
+
+          + retention_policy {
+              + days    = 30
+              + enabled = true
+            }
+        }
+
+      + metric {
+          + category = "AllMetrics"
+          + enabled  = true
+
+          + retention_policy {
+              + days    = 30
+              + enabled = true
+            }
+        }
+    }
+
+  # module.aks.azurerm_resource_group.main will be created
+  + resource "azurerm_resource_group" "main" {
+      + id       = (known after apply)
+      + location = "northeurope"
+      + name     = "casestudy-aks"
+    }
+
+  # module.helm.azurerm_postgresql_database.main will be created
+  + resource "azurerm_postgresql_database" "main" {
+      + charset             = "UTF8"
+      + collation           = "English_United States.1252"
+      + id                  = (known after apply)
+      + name                = "bitnami_mediawiki"
+      + resource_group_name = "casestudy-postgres"
+      + server_name         = "casestudy-postgres"
+    }
+
+  # module.helm.azurerm_postgresql_firewall_rule.test will be created
+  + resource "azurerm_postgresql_firewall_rule" "test" {
+      + end_ip_address      = "0.0.0.0"
+      + id                  = (known after apply)
+      + name                = "acctest"
+      + resource_group_name = "casestudy-postgres"
+      + server_name         = "casestudy-postgres"
+      + start_ip_address    = "0.0.0.0"
+    }
+
+  # module.helm.azurerm_postgresql_server.main will be created
+  + resource "azurerm_postgresql_server" "main" {
+      + administrator_login              = "bn_mediawiki"
+      + administrator_login_password     = (sensitive value)
+      + auto_grow_enabled                = true
+      + backup_retention_days            = (known after apply)
+      + create_mode                      = "Default"
+      + fqdn                             = (known after apply)
+      + geo_redundant_backup_enabled     = true
+      + id                               = (known after apply)
+      + location                         = "northeurope"
+      + name                             = "casestudy-postgres"
+      + public_network_access_enabled    = false
+      + resource_group_name              = "casestudy-postgres"
+      + sku_name                         = "GP_Gen5_2"
+      + ssl_enforcement                  = (known after apply)
+      + ssl_enforcement_enabled          = true
+      + ssl_minimal_tls_version_enforced = "TLS1_2"
+      + storage_mb                       = (known after apply)
+      + version                          = "11"
+
+      + storage_profile {
+          + auto_grow             = (known after apply)
+          + backup_retention_days = (known after apply)
+          + geo_redundant_backup  = (known after apply)
+          + storage_mb            = (known after apply)
+        }
+
+      + threat_detection_policy {
+          + email_account_admins = false
+          + enabled              = true
+          + retention_days       = 0
+        }
+    }
+
+  # module.helm.azurerm_resource_group.main will be created
+  + resource "azurerm_resource_group" "main" {
+      + id       = (known after apply)
+      + location = "northeurope"
+      + name     = "casestudy-postgres"
+    }
+
+  # module.helm.helm_release.main will be created
+  + resource "helm_release" "main" {
+      + atomic                     = false
+      + chart                      = "mediawiki"
+      + cleanup_on_fail            = false
+      + create_namespace           = false
+      + dependency_update          = false
+      + disable_crd_hooks          = false
+      + disable_openapi_validation = false
+      + disable_webhooks           = false
+      + force_update               = false
+      + id                         = (known after apply)
+      + lint                       = false
+      + manifest                   = (known after apply)
+      + max_history                = 0
+      + metadata                   = (known after apply)
+      + name                       = "mediawiki"
+      + namespace                  = (known after apply)
+      + pass_credentials           = false
+      + recreate_pods              = false
+      + render_subchart_notes      = true
+      + replace                    = false
+      + repository                 = "https://charts.bitnami.com/bitnami"
+      + reset_values               = false
+      + reuse_values               = false
+      + skip_crds                  = false
+      + status                     = "deployed"
+      + timeout                    = 300
+      + values                     = (known after apply)
+      + verify                     = false
+      + version                    = "14.3.16"
+      + wait                       = true
+      + wait_for_jobs              = false
+    }
+
+  # module.helm.kubernetes_namespace.main will be created
+  + resource "kubernetes_namespace" "main" {
+      + id = (known after apply)
+
+      + metadata {
+          + generation       = (known after apply)
+          + name             = "mediawiki"
+          + resource_version = (known after apply)
+          + uid              = (known after apply)
+        }
+    }
+
+  # module.helm.random_password.postgres_server_password will be created
+  + resource "random_password" "postgres_server_password" {
+      + bcrypt_hash = (sensitive value)
+      + id          = (known after apply)
+      + length      = 16
+      + lower       = true
+      + min_lower   = 0
+      + min_numeric = 0
+      + min_special = 0
+      + min_upper   = 0
+      + number      = true
+      + numeric     = true
+      + result      = (sensitive value)
+      + special     = false
+      + upper       = true
+    }
+
+  # module.networking.azurerm_network_security_group.cluster_subnet_nsg will be created
+  + resource "azurerm_network_security_group" "cluster_subnet_nsg" {
+      + id                  = (known after apply)
+      + location            = "northeurope"
+      + name                = "casestudy-vnet_nsg"
+      + resource_group_name = "casestudy-vnet"
+      + security_rule       = [
+          + {
+              + access                                     = "Allow"
+              + description                                = ""
+              + destination_address_prefix                 = "*"
+              + destination_address_prefixes               = []
+              + destination_application_security_group_ids = []
+              + destination_port_range                     = "443"
+              + destination_port_ranges                    = []
+              + direction                                  = "Inbound"
+              + name                                       = "allow_https"
+              + priority                                   = 100
+              + protocol                                   = "Tcp"
+              + source_address_prefix                      = "*"
+              + source_address_prefixes                    = []
+              + source_application_security_group_ids      = []
+              + source_port_range                          = "*"
+              + source_port_ranges                         = []
+            },
+          + {
+              + access                                     = "Deny"
+              + description                                = ""
+              + destination_address_prefix                 = "*"
+              + destination_address_prefixes               = []
+              + destination_application_security_group_ids = []
+              + destination_port_range                     = "80"
+              + destination_port_ranges                    = []
+              + direction                                  = "Inbound"
+              + name                                       = "Deny_http"
+              + priority                                   = 1000
+              + protocol                                   = "Tcp"
+              + source_address_prefix                      = "*"
+              + source_address_prefixes                    = []
+              + source_application_security_group_ids      = []
+              + source_port_range                          = "*"
+              + source_port_ranges                         = []
+            },
+        ]
+    }
+
+  # module.networking.azurerm_resource_group.main will be created
+  + resource "azurerm_resource_group" "main" {
+      + id       = (known after apply)
+      + location = "northeurope"
+      + name     = "casestudy-vnet"
+    }
+
+  # module.networking.azurerm_subnet.main["AKSSubnet"] will be created
+  + resource "azurerm_subnet" "main" {
+      + address_prefix                                 = (known after apply)
+      + address_prefixes                               = [
+          + "192.168.0.0/24",
+        ]
+      + enforce_private_link_endpoint_network_policies = false
+      + enforce_private_link_service_network_policies  = false
+      + id                                             = (known after apply)
+      + name                                           = "AKSSubnet"
+      + resource_group_name                            = "casestudy-vnet"
+      + virtual_network_name                           = "casestudy-vnet"
+    }
+
+  # module.networking.azurerm_subnet.main["JumpboxSubnet"] will be created
+  + resource "azurerm_subnet" "main" {
+      + address_prefix                                 = (known after apply)
+      + address_prefixes                               = [
+          + "192.168.1.64/27",
+        ]
+      + enforce_private_link_endpoint_network_policies = false
+      + enforce_private_link_service_network_policies  = false
+      + id                                             = (known after apply)
+      + name                                           = "JumpboxSubnet"
+      + resource_group_name                            = "casestudy-vnet"
+      + virtual_network_name                           = "casestudy-vnet"
+    }
+
+  # module.networking.azurerm_subnet.main["PrivateEndpointSubnet"] will be created
+  + resource "azurerm_subnet" "main" {
+      + address_prefix                                 = (known after apply)
+      + address_prefixes                               = [
+          + "192.168.1.0/26",
+        ]
+      + enforce_private_link_endpoint_network_policies = false
+      + enforce_private_link_service_network_policies  = false
+      + id                                             = (known after apply)
+      + name                                           = "PrivateEndpointSubnet"
+      + resource_group_name                            = "casestudy-vnet"
+      + virtual_network_name                           = "casestudy-vnet"
+    }
+
+  # module.networking.azurerm_subnet_network_security_group_association.cluster_subnet_association will be created
+  + resource "azurerm_subnet_network_security_group_association" "cluster_subnet_association" {
+      + id                        = (known after apply)
+      + network_security_group_id = (known after apply)
+      + subnet_id                 = (known after apply)
+    }
+
+  # module.networking.azurerm_virtual_network.main will be created
+  + resource "azurerm_virtual_network" "main" {
+      + address_space         = [
+          + "192.168.0.0/22",
+        ]
+      + guid                  = (known after apply)
+      + id                    = (known after apply)
+      + location              = "northeurope"
+      + name                  = "casestudy-vnet"
+      + resource_group_name   = "casestudy-vnet"
+      + subnet                = (known after apply)
+      + vm_protection_enabled = false
+    }
+
+  # module.helm.module.private_endpoint[0].azurerm_private_endpoint.private_endpoint will be created
+  + resource "azurerm_private_endpoint" "private_endpoint" {
+      + custom_dns_configs       = (known after apply)
+      + id                       = (known after apply)
+      + location                 = "northeurope"
+      + name                     = "casestudy-postgres-privateendpoint"
+      + private_dns_zone_configs = (known after apply)
+      + resource_group_name      = "casestudy-postgres"
+      + subnet_id                = (known after apply)
+
+      + private_service_connection {
+          + is_manual_connection           = false
+          + name                           = "casestudy-postgres-privateendpoint"
+          + private_connection_resource_id = (known after apply)
+          + private_ip_address             = (known after apply)
+          + subresource_names              = [
+              + "postgresqlServer",
+            ]
+        }
+    }
+
+Plan: 20 to add, 0 to change, 0 to destroy.
+
+------------------------------------------------------------------------
+
+Note: You didn't specify an "-out" parameter to save this plan, so Terraform
+can't guarantee that exactly these actions will be performed if
+"terraform apply" is subsequently run.
+
